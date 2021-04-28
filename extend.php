@@ -4,6 +4,7 @@
  * This file is part of justoverclock/flarum-ext-welcomebox.
  *
  * Copyright (c) 2021 Marco Colia.
+ * https://flarum.it
  *
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.

@@ -1,3 +1,13 @@
+/*
+ * This file is part of justoverclock/flarum-ext-welcomebox.
+ *
+ * Copyright (c) 2021 Marco Colia.
+ * https://flarum.it
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 import { extend } from 'flarum/extend';
 import app from 'flarum/app';
 import IndexPage from 'flarum/components/IndexPage';
@@ -7,7 +17,6 @@ import username from 'flarum/common/helpers/username';
 app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
     const user = app.session.user;
-
     if (app.session.user)
       items.add(
         'welcomeBox',
@@ -15,8 +24,9 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
           'div',
           { class: 'containerwb' },
           m('div', { class: 'backgrwb' }, [
-            m('div',  m('a', { href: app.route.user(user) }, m('div', { class: 'avatarwb' }, avatar(user)))),
-            m('div', { class: 'contentwb' }, m('div', { class: 'tagwb' }, 'Welcome Back, ', username(user))),
+            m('div', m('a', { href: app.route.user(user) }, m('div', { class: 'avatarwb' }, avatar(user)))),
+            m('div', { class: 'contentwb' }, m('div', { class: 'p' }, 'Welcome Back,  ', username(user))),
+            m('button', { onclick: app.session.logout.bind(app.session), class: 'tagwb' }, 'Logout'),
           ])
         ),
         20

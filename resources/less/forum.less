@@ -25,10 +25,22 @@
 }
 
 .tagwb {
-  color: #4D698E;
-  padding: .5ch 1ch;
-  border-radius: 1ch;
-  font-weight: book;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 20px;
+  padding: 8px 13px;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #667c99;
+  background: #e8ecf3;
+  border: 0;
 }
 
 
@@ -47,19 +59,24 @@
 }
 
 .avatarwb {
-  margin-top: 20px;
-  width: 100px;
-  height: 100px;
-  box-sizing: border-box;
-  border: 5px white solid;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-  transform: translatey(0px);
-  animation: float 6s ease-in-out infinite;
-  img { width: 100%; height: auto; }
-}
+  .Avatar {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border: 5px white solid;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+    animation: float 6s ease-in-out infinite;
 
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
 .contentwb {
   width: 100%;
   max-width: 600px;

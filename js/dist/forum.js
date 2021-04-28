@@ -120,6 +120,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! flarum/common/helpers/username */ "flarum/common/helpers/username");
 /* harmony import */ var flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4__);
+/*
+ * This file is part of justoverclock/flarum-ext-welcomebox.
+ *
+ * Copyright (c) 2021 Marco Colia.
+ * https://flarum.it
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
 
 
 
@@ -139,8 +148,11 @@ flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.initializers.add('justovercloc
     }, flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3___default()(user)))), m('div', {
       "class": 'contentwb'
     }, m('div', {
+      "class": 'p'
+    }, 'Welcome Back,  ', flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(user))), m('button', {
+      onclick: flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session.logout.bind(flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session),
       "class": 'tagwb'
-    }, 'Welcome Back, ', flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(user)))])), 20);
+    }, 'Logout')])), 20);
   });
 });
 
