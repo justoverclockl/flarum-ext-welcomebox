@@ -4,3 +4,4 @@ flarum-ext-welcomebox:
     logout: Logout
     npost: Post
     discussion: Discussions
+    groupwb: Groups

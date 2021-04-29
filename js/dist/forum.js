@@ -157,15 +157,19 @@ flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.initializers.add('justovercloc
       "class": 'contentwb'
     }, m('div', {
       "class": 'textinfo'
-    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(user))), m('div', {
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), m("strong", flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(user)))), m('div', {
       "class": 'iconbadge'
     }, flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6___default()(user.badges().toArray())), m('.ulwb', {
       "class": 'contentwb'
     }, [m('li', [m('label', {
       "class": 'textinfo'
-    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.npost')), ': ', flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default()(user.commentCount())]), m('li', [m('label', {
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.npost')), ': ', m("strong", {
       "class": 'textinfo'
-    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.discussion')), ': ', flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default()(user.discussionCount())])]), m('br'), m('button', {
+    }, flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default()(user.commentCount()))]), m('li', [m('label', {
+      "class": 'textinfo'
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.discussion')), ': ', m("strong", {
+      "class": 'textinfo'
+    }, flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default()(user.discussionCount()))])]), m('br'), m('button', {
       onclick: flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session.logout.bind(flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session),
       "class": 'tagwb'
     }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.logout'))])), 20);
