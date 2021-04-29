@@ -13,7 +13,6 @@
 import { extend } from 'flarum/extend';
 import app from 'flarum/app';
 import IndexPage from 'flarum/components/IndexPage';
-import avatar from 'flarum/common/helpers/avatar';
 import username from 'flarum/common/helpers/username';
 import formatNumber from 'flarum/utils/formatNumber';
 import listItems from 'flarum/helpers/listItems';

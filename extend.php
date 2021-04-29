@@ -13,8 +13,7 @@
 namespace Justoverclock\Welcomebox;
 
 use Flarum\Extend;
-use Flarum\Api\Serializer\AbstractSerializer;
-use Illuminate\Contracts\Events\Dispatcher;
+
 
 return [
     (new Extend\Frontend('forum'))
