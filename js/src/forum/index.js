@@ -1,15 +1,3 @@
-/*
- * This file is part of justoverclock/flarum-ext-welcomebox.
- *
- * Copyright (c) Marco Colia.
- * https://flarum.it
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
-
-/* global m */
-
 import { extend } from 'flarum/extend';
 import app from 'flarum/app';
 import IndexPage from 'flarum/components/IndexPage';
@@ -21,6 +9,7 @@ import AvatarEditor from 'flarum/components/AvatarEditor';
 app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
     const user = app.session.user;
+
     if (app.session.user)
       items.add(
         'welcomeBox',
@@ -37,12 +26,12 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
             m('div', { class: 'iconbadge' }, listItems(user.badges().toArray())),
             m('.ulwb', { class: 'contentwb' }, [
               m('li', [
-                m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')),
+                m('label', { class: 'textinfo' }, app.translator.trans('core.forum.user.posts_link')),
                 ': ',
                 m('strong', { class: 'textinfo' }, formatNumber(user.commentCount())),
               ]),
               m('li', [
-                m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')),
+                m('label', { class: 'textinfo' }, app.translator.trans('core.forum.user.discussions_link')),
                 ': ',
                 m('strong', { class: 'textinfo' }, formatNumber(user.discussionCount())),
               ]),
