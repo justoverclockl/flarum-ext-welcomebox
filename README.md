@@ -8,6 +8,7 @@ A [Flarum](http://flarum.org) extension. Add Welcome Box Info in sidenav.
 - Upload/Remove avatar directly from the Welcome Box
 - Show total post counter
 - Show Total discussion counter
+- Show User Groups
 
 ### Installation
 
