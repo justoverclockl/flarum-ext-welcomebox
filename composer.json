@@ -9,7 +9,7 @@
     "support": {
         "issues": "https://github.com/justoverclockl/flarum-ext-welcomebox/issues",
         "source": "https://github.com/justoverclockl/flarum-ext-welcomebox",
-        "forum": "https://discuss.flarum.org/d/4154"
+        "forum": "https://discuss.flarum.org/d/27023"
     },
     "require": {
         "flarum/core": "^0.1.0-beta.16"
