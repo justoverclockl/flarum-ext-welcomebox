@@ -124,6 +124,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! flarum/helpers/listItems */ "flarum/helpers/listItems");
 /* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var flarum_components_AvatarEditor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! flarum/components/AvatarEditor */ "flarum/components/AvatarEditor");
+/* harmony import */ var flarum_components_AvatarEditor__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(flarum_components_AvatarEditor__WEBPACK_IMPORTED_MODULE_7__);
 /*
  * This file is part of justoverclock/flarum-ext-welcomebox.
  *
@@ -142,6 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.initializers.add('justoverclock/flarum-ext-welcomebox', function () {
   Object(flarum_extend__WEBPACK_IMPORTED_MODULE_0__["extend"])(flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_2___default.a.prototype, 'sidebarItems', function (items) {
     var user = flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session.user;
@@ -153,7 +156,9 @@ flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.initializers.add('justovercloc
       href: flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.route.user(user)
     }, m('div', {
       "class": 'avatarwb'
-    }, flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3___default()(user)))), m('div', {
+    }, flarum_components_AvatarEditor__WEBPACK_IMPORTED_MODULE_7___default.a.component({
+      user: user
+    })))), m('div', {
       "class": 'contentwb'
     }, m('div', {
       "class": 'textinfo'
@@ -208,6 +213,17 @@ module.exports = flarum.core.compat['common/helpers/avatar'];
 /***/ (function(module, exports) {
 
 module.exports = flarum.core.compat['common/helpers/username'];
+
+/***/ }),
+
+/***/ "flarum/components/AvatarEditor":
+/*!****************************************************************!*\
+  !*** external "flarum.core.compat['components/AvatarEditor']" ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.core.compat['components/AvatarEditor'];
 
 /***/ }),
 

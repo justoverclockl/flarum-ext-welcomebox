@@ -17,6 +17,7 @@ import avatar from 'flarum/common/helpers/avatar';
 import username from 'flarum/common/helpers/username';
 import formatNumber from 'flarum/utils/formatNumber';
 import listItems from 'flarum/helpers/listItems';
+import AvatarEditor from 'flarum/components/AvatarEditor';
 
 app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
@@ -28,7 +29,7 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
           'div',
           { class: 'containerwb' },
           m('div', { class: 'backgrwb' }, [
-            m('div', m('a', { href: app.route.user(user) }, m('div', { class: 'avatarwb' }, avatar(user)))),
+            m('div', m('a', { href: app.route.user(user) }, m('div', { class: 'avatarwb' }, AvatarEditor.component({ user })))),
             m(
               'div',
               { class: 'contentwb' },
@@ -59,3 +60,5 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
       );
   });
 });
+
+
