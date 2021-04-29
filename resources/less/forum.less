@@ -60,10 +60,8 @@
   background: #e8ecf3;
   border: 0;
 }
-
-
 .backgrwb {
-  background: #fcfcfc;
+  background: linear-gradient(0deg, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%);
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   border-radius: 20px;
   width: 200px;
@@ -73,7 +71,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .avatarwb {
   .Avatar {
     margin-top: 20px;
@@ -92,7 +89,6 @@
       height: auto;
     }
   }
-
 }
 .contentwb {
   width: 100%;
@@ -100,4 +96,27 @@
   padding: 5px 40px;
   box-sizing: border-box;
   text-align: center;
+
+}
+.avatarwb {
+  .Dropdown-toggle {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 40px;
+    padding: 15px;
+    color: #fcfcfc;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border: 5px white solid;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+    animation: float 6s ease-in-out infinite;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

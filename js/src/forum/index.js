@@ -33,32 +33,24 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
             m(
               'div',
               { class: 'contentwb' },
-              m('div', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), m("strong", username(user))),
+              m('div', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), m('strong', username(user)))
             ),
             m('div', { class: 'iconbadge' }, listItems(user.badges().toArray())),
             m('.ulwb', { class: 'contentwb' }, [
               m('li', [
                 m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')),
                 ': ',
-                m("strong", { class: 'textinfo' }, formatNumber(user.commentCount())),
+                m('strong', { class: 'textinfo' }, formatNumber(user.commentCount())),
               ]),
               m('li', [
                 m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')),
                 ': ',
-                m("strong", { class: 'textinfo' },formatNumber(user.discussionCount())),
+                m('strong', { class: 'textinfo' }, formatNumber(user.discussionCount())),
               ]),
             ]),
-            m('br'),
-            m(
-              'button',
-              { onclick: app.session.logout.bind(app.session), class: 'tagwb' },
-              app.translator.trans('flarum-ext-welcomebox.forum.logout')
-            ),
           ])
         ),
         20
       );
   });
 });
-
-
