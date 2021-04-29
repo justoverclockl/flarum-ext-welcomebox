@@ -8,11 +8,15 @@
  * file that was distributed with this source code.
  */
 
+/* global m */
+
 import { extend } from 'flarum/extend';
 import app from 'flarum/app';
 import IndexPage from 'flarum/components/IndexPage';
 import avatar from 'flarum/common/helpers/avatar';
 import username from 'flarum/common/helpers/username';
+import formatNumber from 'flarum/utils/formatNumber';
+import listItems from 'flarum/helpers/listItems';
 
 app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
@@ -25,8 +29,30 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
           { class: 'containerwb' },
           m('div', { class: 'backgrwb' }, [
             m('div', m('a', { href: app.route.user(user) }, m('div', { class: 'avatarwb' }, avatar(user)))),
-            m('div', { class: 'contentwb' }, m('div', { class: 'p' }, 'Welcome Back,  ', username(user))),
-            m('button', { onclick: app.session.logout.bind(app.session), class: 'tagwb' }, 'Logout'),
+            m(
+              'div',
+              { class: 'contentwb' },
+              m('div', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), username(user))
+            ),
+            m('div', { class: 'iconbadge' }, listItems(user.badges().toArray())),
+            m('.ulwb', { class: 'contentwb' }, [
+              m('li', [
+                m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')),
+                ': ',
+                formatNumber(user.commentCount()),
+              ]),
+              m('li', [
+                m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')),
+                ': ',
+                formatNumber(user.discussionCount()),
+              ]),
+            ]),
+            m('br'),
+            m(
+              'button',
+              { onclick: app.session.logout.bind(app.session), class: 'tagwb' },
+              app.translator.trans('flarum-ext-welcomebox.forum.logout')
+            ),
           ])
         ),
         20

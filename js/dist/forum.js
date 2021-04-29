@@ -120,6 +120,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! flarum/common/helpers/username */ "flarum/common/helpers/username");
 /* harmony import */ var flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flarum/utils/formatNumber */ "flarum/utils/formatNumber");
+/* harmony import */ var flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! flarum/helpers/listItems */ "flarum/helpers/listItems");
+/* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6__);
 /*
  * This file is part of justoverclock/flarum-ext-welcomebox.
  *
@@ -129,6 +133,10 @@ __webpack_require__.r(__webpack_exports__);
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
+
+/* global m */
+
+
 
 
 
@@ -148,11 +156,19 @@ flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.initializers.add('justovercloc
     }, flarum_common_helpers_avatar__WEBPACK_IMPORTED_MODULE_3___default()(user)))), m('div', {
       "class": 'contentwb'
     }, m('div', {
-      "class": 'p'
-    }, 'Welcome Back,  ', flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(user))), m('button', {
+      "class": 'textinfo'
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), flarum_common_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(user))), m('div', {
+      "class": 'iconbadge'
+    }, flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_6___default()(user.badges().toArray())), m('.ulwb', {
+      "class": 'contentwb'
+    }, [m('li', [m('label', {
+      "class": 'textinfo'
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.npost')), ': ', flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default()(user.commentCount())]), m('li', [m('label', {
+      "class": 'textinfo'
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.discussion')), ': ', flarum_utils_formatNumber__WEBPACK_IMPORTED_MODULE_5___default()(user.discussionCount())])]), m('br'), m('button', {
       onclick: flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session.logout.bind(flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.session),
       "class": 'tagwb'
-    }, 'Logout')])), 20);
+    }, flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.translator.trans('flarum-ext-welcomebox.forum.logout'))])), 20);
   });
 });
 
@@ -210,6 +226,28 @@ module.exports = flarum.core.compat['components/IndexPage'];
 /***/ (function(module, exports) {
 
 module.exports = flarum.core.compat['extend'];
+
+/***/ }),
+
+/***/ "flarum/helpers/listItems":
+/*!**********************************************************!*\
+  !*** external "flarum.core.compat['helpers/listItems']" ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.core.compat['helpers/listItems'];
+
+/***/ }),
+
+/***/ "flarum/utils/formatNumber":
+/*!***********************************************************!*\
+  !*** external "flarum.core.compat['utils/formatNumber']" ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.core.compat['utils/formatNumber'];
 
 /***/ })
 
