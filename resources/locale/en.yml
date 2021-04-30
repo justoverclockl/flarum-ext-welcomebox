@@ -1,3 +1,5 @@
 flarum-ext-welcomebox:
   forum:
     wback: Welcome back,
+    npost: => core.forum.user.posts_link
+    discussion: => core.forum.user.discussions_link
