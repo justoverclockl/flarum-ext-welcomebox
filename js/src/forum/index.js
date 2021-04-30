@@ -26,12 +26,12 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
             m('div', { class: 'iconbadge' }, listItems(user.badges().toArray())),
             m('.ulwb', { class: 'contentwb' }, [
               m('li', [
-                m('label', { class: 'textinfo' }, app.translator.trans('core.forum.user.posts_link')),
+                m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')),
                 ': ',
                 m('strong', { class: 'textinfo' }, formatNumber(user.commentCount())),
               ]),
               m('li', [
-                m('label', { class: 'textinfo' }, app.translator.trans('core.forum.user.discussions_link')),
+                m('label', { class: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')),
                 ': ',
                 m('strong', { class: 'textinfo' }, formatNumber(user.discussionCount())),
               ]),
