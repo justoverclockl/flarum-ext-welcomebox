@@ -1,3 +1,5 @@
+@primarybgww: linear-gradient(0deg, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%);
+
 @keyframes float {
   0% {
     box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
@@ -61,7 +63,7 @@
   border: 0;
 }
 .backgrwb {
-  background: linear-gradient(0deg, rgba(252,252,252,1) 0%, rgba(255,255,255,0) 100%);
+  background: @primarybgww;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   border-radius: 20px;
   width: 200px;
@@ -137,4 +139,29 @@
     display: none;
   }
 }
+.ingwbox{
+  width: 120px;
+  height: 200px;
+}
 
+.guesttext {
+  font-weight: bold;
+  margin-top: 15px;
+}
+p.guestdesc {
+  padding: 15px;
+  margin-top: -10px;
+  text-align: center;
+  margin-bottom: -3px;
+}
+.backgrwbguest {
+  background: @primarybgww;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  border-radius: 20px;
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
