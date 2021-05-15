@@ -44,26 +44,27 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
 });
 extend(IndexPage.prototype, 'sidebarItems', (items) => {
   if (!app.session.user)
-    items.add(
-      'welcomeBoxGuest',
-      m(
-        'div',
-        { className: 'containerwb' },
-        m('div', { className: 'backgrwbguest' }, [
-          m('div', { className: 'guesttext' }, app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')),
-          m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
-          m(
-            'button',
-            { className: '.SplitDropdown-button Button Button--primary hasIcon', type: 'button', onclick: () => app.modal.show(SignUpModal) },
-            app.translator.trans('core.forum.header.sign_up_link')
-          ),
-          m(
-            'div',
-            { className: 'contentwb' },
-            m('div', m('img', { className: 'ingwbox', src: 'https://i.ibb.co/k5pf7jh/reg-img.png', alt: 'Girl in a jacket' }))
-          ),
-        ])
-      ),
-      20
-    );
+    if (app.forum.attribute('HideGuestBox') === true)
+      items.add(
+        'welcomeBoxGuest',
+        m(
+          'div',
+          { className: 'containerwb' },
+          m('div', { className: 'backgrwbguest' }, [
+            m('div', { className: 'guesttext' }, app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')),
+            m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
+            m(
+              'button',
+              { className: '.SplitDropdown-button Button Button--primary hasIcon', type: 'button', onclick: () => app.modal.show(SignUpModal) },
+              app.translator.trans('core.forum.header.sign_up_link')
+            ),
+            m(
+              'div',
+              { className: 'contentwb' },
+              m('div', m('img', { className: 'ingwbox', src: 'https://i.ibb.co/k5pf7jh/reg-img.png', alt: 'Girl in a jacket' }))
+            ),
+          ])
+        ),
+        20
+      );
 });
