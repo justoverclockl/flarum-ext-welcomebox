@@ -43,6 +43,9 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   });
 });
 extend(IndexPage.prototype, 'sidebarItems', (items) => {
+
+  const assetsFolder = app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-welcomebox/reg-img.png';
+
   if (!app.session.user)
     if (app.forum.attribute('HideGuestBox') === true)
       items.add(
@@ -61,7 +64,7 @@ extend(IndexPage.prototype, 'sidebarItems', (items) => {
             m(
               'div',
               { className: 'contentwb' },
-              m('div', m('img', { className: 'ingwbox', src: 'https://i.ibb.co/k5pf7jh/reg-img.png', alt: 'Girl in a jacket' }))
+              m('div', m('img', { className: 'ingwbox', src: assetsFolder}))
             ),
           ])
         ),
