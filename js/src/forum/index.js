@@ -10,6 +10,10 @@ import SignUpModal from 'flarum/components/SignUpModal';
 app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
     const user = app.session.user;
+    const baseUrl = app.forum.attribute('baseUrl');
+    const userName = user.displayName();
+    const SettingsLink = baseUrl + '/settings';
+
     if (app.session.user)
       items.add(
         'welcomeBox',
@@ -21,7 +25,23 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
             m(
               'div',
               { className: 'contentwb' },
-              m('div', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), m('strong', username(user)))
+              m('div', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), m('strong', username(user))),
+              m(
+                'a',
+                {
+                  className: 'proflink',
+                  href: baseUrl + '/u/' + userName,
+                },
+                app.translator.trans('flarum-ext-welcomebox.forum.goToProfile')
+              ),
+              m(
+                'a',
+                {
+                  className: 'settinglink',
+                  href: SettingsLink,
+                },
+                app.translator.trans('flarum-ext-welcomebox.forum.SettingsLink')
+              )
             ),
             m('div', { className: 'iconbadge' }, listItems(user.badges().toArray())),
             m('.ulwb', { className: 'contentwb' }, [
@@ -58,14 +78,14 @@ extend(IndexPage.prototype, 'sidebarItems', (items) => {
             m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
             m(
               'button',
-              { className: '.SplitDropdown-button Button Button--primary hasIcon', type: 'button', onclick: () => app.modal.show(SignUpModal) },
+              {
+                className: '.SplitDropdown-button Button Button--primary hasIcon',
+                type: 'button',
+                onclick: () => app.modal.show(SignUpModal),
+              },
               app.translator.trans('core.forum.header.sign_up_link')
             ),
-            m(
-              'div',
-              { className: 'contentwb' },
-              m('div', m('img', { className: 'ingwbox', src: assetsFolder}))
-            ),
+            m('div', { className: 'contentwb' }, m('div', m('img', { className: 'ingwbox', src: assetsFolder }))),
           ])
         ),
         20
