@@ -11,7 +11,6 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
     const user = app.session.user;
     const baseUrl = app.forum.attribute('baseUrl');
-    const userName = user.displayName();
     const SettingsLink = baseUrl + '/settings';
 
     if (app.session.user)
@@ -30,7 +29,7 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
                 'a',
                 {
                   className: 'proflink',
-                  href: baseUrl + '/u/' + userName,
+                  href: app.route.user(user),
                 },
                 app.translator.trans('flarum-ext-welcomebox.forum.goToProfile')
               ),
