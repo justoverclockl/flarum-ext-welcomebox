@@ -9,9 +9,11 @@ import SignUpModal from 'flarum/components/SignUpModal';
 
 app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
+
     const user = app.session.user;
     const baseUrl = app.forum.attribute('baseUrl');
-    const SettingsLink = baseUrl + '/settings';
+    const SettingsLink = app.route('settings');
+
 
     if (app.session.user)
       items.add(
@@ -20,39 +22,40 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
           'div',
           { className: 'containerwb' },
           m('div', { className: 'backgrwb' }, [
-            m('div', m('a', { href: app.route.user(user) }, m('div', { className: 'avatarwb' }, AvatarEditor.component({ user })))),
-            m(
-              'div',
-              { className: 'contentwb' },
-              m('div', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'), m('br'), m('strong', username(user))),
-              m(
-                'a',
-                {
-                  className: 'proflink',
-                  href: app.route.user(user),
-                },
-                app.translator.trans('flarum-ext-welcomebox.forum.goToProfile')
-              ),
-              m(
-                'a',
-                {
-                  className: 'settinglink',
-                  href: SettingsLink,
-                },
-                app.translator.trans('flarum-ext-welcomebox.forum.SettingsLink')
+            m('div', m('a', { href: app.route.user(user) },
+              m('div', { className: 'avatarwb' }, AvatarEditor.component({ user })))),
+            m('div', { className: 'contentwb' },
+              m('div', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.wback'),
+                 m('br'),
+                m('strong', username(user))),
+                  m("div", {className:"cont"},
+                    m("div", {className:"circletop"},
+                  [
+                    m("a", {href:SettingsLink, title:app.translator.trans('core.forum.settings.title')},
+                      m("i", {className:"menuicon fas fa-tasks"})
+                    ),
+                    m("a", {href:app.route.user(user), title:"profile"},
+                      m("i", {className:"menuicon far fa-user"})
+                    ),
+                    m("a", {href:app.route.user(user) +'/mentions', title:"Mentions"},
+                      m("i", {className:"menuicon fas fa-at"})
+                    ),
+                    m("a", {href:app.route.user(user) +'/discussions', title:"Discussion list"},
+                      m("i", {className:"menuicon far fa-list-alt"})
+                    )
+                  ]
+                )
               )
             ),
             m('div', { className: 'iconbadge' }, listItems(user.badges().toArray())),
-            m('.ulwb', { className: 'contentwb' }, [
-              m('li', [
-                m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')),
-                ': ',
+              m('.ulwb', { className: 'contentwb' }, [
+                m('li', [
+                  m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')), ': ',
                 m('strong', { className: 'textinfo' }, formatNumber(user.commentCount())),
               ]),
               m('li', [
-                m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')),
-                ': ',
-                m('strong', { className: 'textinfo' }, formatNumber(user.discussionCount())),
+                m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')), ': ',
+                  m('strong', { className: 'textinfo' }, formatNumber(user.discussionCount())),
               ]),
             ]),
           ])
@@ -74,10 +77,8 @@ extend(IndexPage.prototype, 'sidebarItems', (items) => {
           { className: 'containerwb' },
           m('div', { className: 'backgrwbguest' }, [
             m('div', { className: 'guesttext' }, app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')),
-            m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
-            m(
-              'button',
-              {
+              m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
+            m('button', {
                 className: '.SplitDropdown-button Button Button--primary hasIcon',
                 type: 'button',
                 onclick: () => app.modal.show(SignUpModal),
