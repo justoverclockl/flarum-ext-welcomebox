@@ -34,13 +34,13 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
                     m("a", {href:SettingsLink, title:app.translator.trans('core.forum.settings.title')},
                       m("i", {className:"menuicon fas fa-tasks"})
                     ),
-                    m("a", {href:app.route.user(user), title:"profile"},
+                    m("a", {href:app.route.user(user), title:app.translator.trans('flarum-ext-welcomebox.forum.tooltipProfile')},
                       m("i", {className:"menuicon far fa-user"})
                     ),
-                    m("a", {href:app.route.user(user) +'/mentions', title:"Mentions"},
+                    m("a", {href:app.route.user(user) +'/mentions', title:app.translator.trans('flarum-ext-welcomebox.forum.tooltipMentions')},
                       m("i", {className:"menuicon fas fa-at"})
                     ),
-                    m("a", {href:app.route.user(user) +'/discussions', title:"Discussion list"},
+                    m("a", {href:app.route.user(user) +'/discussions', title:app.translator.trans('flarum-ext-welcomebox.forum.tooltipDisclist')},
                       m("i", {className:"menuicon far fa-list-alt"})
                     )
                   ]
