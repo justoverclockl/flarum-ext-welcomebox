@@ -8,6 +8,7 @@ A [Flarum](http://flarum.org) extension. Add Welcome Box Info in sidenav.
 - Show total post counter
 - Show Total discussion counter
 - Show User Groups
+- Show Quick links to settings, mentions, profile and discussions
 
 ### Installation
 
@@ -31,5 +32,5 @@ php flarum cache:clear
 ### Links
 
 - [Packagist](https://packagist.org/packages/justoverclock/flarum-ext-welcomebox)
-- [GitHub](https://github.com/justoverclock/flarum-ext-welcomebox)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [GitHub](https://github.com/justoverclockl/flarum-ext-welcomebox)
+
