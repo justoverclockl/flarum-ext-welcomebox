@@ -29,7 +29,9 @@ php flarum cache:clear
 
 ### Screenshots
 
-![Immagine-2021-04-29-180321](https://user-images.githubusercontent.com/79002016/116582623-d8b3c700-a915-11eb-8466-b87a6cba7d3e.png)
+![1](https://user-images.githubusercontent.com/79002016/126893548-508e1f59-bb9a-4ba5-a48a-7006b529e2c4.png)
+![2](https://user-images.githubusercontent.com/79002016/126893549-e1ec355b-e365-4aa6-b53f-29b66fa9a6fe.png)
+
 
 ### Links
 
