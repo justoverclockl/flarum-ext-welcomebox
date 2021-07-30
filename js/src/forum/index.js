@@ -11,9 +11,7 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   extend(IndexPage.prototype, 'sidebarItems', (items) => {
 
     const user = app.session.user;
-    const baseUrl = app.forum.attribute('baseUrl');
     const SettingsLink = app.route('settings');
-
 
     if (app.session.user)
       items.add(
@@ -65,9 +63,7 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
   });
 });
 extend(IndexPage.prototype, 'sidebarItems', (items) => {
-
-  const assetsFolder = app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-welcomebox/reg-img.png';
-
+  const ImgAvatar = app.forum.attribute('imgUrl') || app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-welcomebox/no-avatar.png';
   if (!app.session.user)
     if (app.forum.attribute('HideGuestBox') === true)
       items.add(
@@ -76,6 +72,7 @@ extend(IndexPage.prototype, 'sidebarItems', (items) => {
           'div',
           { className: 'containerwb' },
           m('div', { className: 'backgrwbguest' }, [
+            m("img", { className:'guestavatarimg', src:ImgAvatar }),
             m('div', { className: 'guesttext' }, app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')),
               m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
             m('button', {
@@ -85,7 +82,7 @@ extend(IndexPage.prototype, 'sidebarItems', (items) => {
               },
               app.translator.trans('core.forum.header.sign_up_link')
             ),
-            m('div', { className: 'contentwb' }, m('div', m('img', { className: 'ingwbox', src: assetsFolder }))),
+            m('div', { className: 'contentwb' }),
           ])
         ),
         20
