@@ -15,3 +15,4 @@ flarum-ext-welcomebox:
     enablepostbox: Enable Welcome Box for guest
     img: Image url (Guest Box)
     img-help: put here the url of image for guest box
+    UseWidget: Use Widget Version
