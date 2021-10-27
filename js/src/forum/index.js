@@ -85,11 +85,6 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
                                         ': ',
                                         m('strong', { className: 'textinfo' }, formatNumber(user.discussionCount())),
                                     ]),
-                                    m('li', [
-                                        m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.lastSeen')),
-                                        ': ',
-                                        m('strong', { className: 'textinfo' }, lastseenAt),
-                                    ]),
                                 ]),
                             ]
                         )
