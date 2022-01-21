@@ -217,3 +217,9 @@ body when (@config-dark-mode = true) {
   background: fade(@primary-color, 10%) !important;
   }
 }
+/* Hide Welcome box in Mobile */
+@media (max-width: 767.98px) {
+.welcomebox-widget .AfruxWidgets-Widget-content {
+    display: none !important;
+ }
+}
