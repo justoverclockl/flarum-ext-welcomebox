@@ -32,7 +32,12 @@
 .textinfo{
   color: #667c99;
 }
-
+.guestavatarimg{
+  height: 100px;
+  width: 100px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 .iconbadge{
   display: flex;
   top: 45%;
@@ -64,7 +69,7 @@
 }
 .backgrwb {
   background: @primarybgww;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border-radius: 20px;
   width: 200px;
   height: 100%;
@@ -72,6 +77,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.iconforlogout::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f2f5";
+    color: @primary-color;
+    font-size: 14px;
 }
 .avatarwb {
   .Avatar {
@@ -94,10 +106,9 @@
 .contentwb {
   width: 100%;
   max-width: 600px;
-  padding: 5px 40px;
+  padding: 5px 15px;
   box-sizing: border-box;
   text-align: center;
-
 }
 .avatarwb {
   .Dropdown-toggle {
@@ -157,13 +168,13 @@
 
 .guesttext {
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 p.guestdesc {
   padding: 15px;
   margin-top: -10px;
   text-align: center;
-  margin-bottom: -3px;
+  margin-bottom: 3px;
 }
 .backgrwbguest {
   background: @primarybgww;
@@ -197,7 +208,9 @@ p.guestdesc {
 
 }
 .settinglink::before {
-  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f7d9";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f7d9";
   color: @primary-color;
   margin-right: 5px;
 
@@ -214,8 +227,41 @@ body when (@config-dark-mode = true) {
   color:#fff
   }
   .backgrwb {
-  background: fade(@primary-color, 10%) !important;
+  background: fade(@primary-color, 10%);
   }
+  .backgrwbguest{
+    background: #1b2028;
+  }
+}
+i.icon.fas.fa-sign-out-alt.logoutt.Button-icon {
+  margin: 0 auto;
+}
+button.Dropdown-toggle.Button.logwbox.hasIcon {
+  border-radius: 16px;
+  position: absolute;
+  margin-left: 150px;
+  margin-top: -243px;
+  background: transparent;
+}
+i.icon.fas.fa-sign-out-alt.logoutt.Button-icon:hover {
+  color: darkred;
+}
+.welcomebox-widget{
+  .AfruxWidgets-Widget-content {
+    background: transparent;
+  }
+  .backgrwb {
+    width: 180px;
+  }
+  button.Dropdown-toggle.Button.logwbox.hasIcon {
+    margin-left: 140px;
+  }
+  .backgrwbguest {
+    width: 180px;
+  }
+}
+li.item-group1 {
+  list-style: none;
 }
 /* Hide Welcome box in Mobile */
 @media (max-width: 767.98px) {

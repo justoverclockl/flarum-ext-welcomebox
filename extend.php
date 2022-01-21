@@ -13,7 +13,6 @@
 namespace Justoverclock\Welcomebox;
 
 use Flarum\Extend;
-use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Api\Event\Serializing;
 
 return [
@@ -25,4 +24,6 @@ return [
         ->css(__DIR__.'/resources/less/admin.less'),
     new Extend\Locales(__DIR__ . '/resources/locale'),
     (new Extend\Settings())->serializeToForum('HideGuestBox', 'justoverclock-welcomebox.hide.guestbox', 'boolval', false),
+    (new Extend\Settings())->serializeToForum('justoverclock-welcomebox.UseWidget', 'justoverclock-welcomebox.UseWidget', 'boolval', false),
+    (new Extend\Settings)->serializeToForum('imgUrl', 'justoverclock-welcomebox.imgUrl'),
 ];
