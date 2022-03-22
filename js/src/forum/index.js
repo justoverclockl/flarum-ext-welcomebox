@@ -16,7 +16,6 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
         const SettingsLink = app.route('settings');
         if (app.forum.attribute('justoverclock-welcomebox.UseWidget') === false) {
             if (user) {
-                const lastseenAt = user.data.attributes.lastSeenAt.slice(0, 10);
 
                 items.add(
                     'welcomeBox',
