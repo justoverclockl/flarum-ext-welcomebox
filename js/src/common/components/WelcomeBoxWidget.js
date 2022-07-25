@@ -33,9 +33,11 @@ export default class WelcomeBoxWidget extends Widget {
             if (user) {
                 const lastseenAt = user.data.attributes.lastSeenAt.slice(0, 10);
 
-                return m('div',
+                return m(
+                    'div',
                     { className: 'containerwb' },
-                    m('div',
+                    m(
+                        'div',
                         { className: 'backgrwb' },
                         Button.component({
                             icon: 'fas fa-sign-out-alt logoutt',
@@ -48,34 +50,40 @@ export default class WelcomeBoxWidget extends Widget {
                             m(
                                 'div',
                                 { className: 'contentwb' },
-                                m('div',
+                                m(
+                                    'div',
                                     { className: 'textinfo' },
                                     app.translator.trans('flarum-ext-welcomebox.forum.wback'),
                                     m('br'),
                                     m('strong', username(user))
                                 ),
-                                m('div',
+                                m(
+                                    'div',
                                     { className: 'cont' },
                                     m('div', { className: 'circletop' }, [
-                                        m('a',
+                                        m(
+                                            'a',
                                             { href: SettingsLink, title: app.translator.trans('core.forum.settings.title') },
                                             m('i', { className: 'menuicon fas fa-tasks' })
                                         ),
-                                        m('a',
+                                        m(
+                                            'a',
                                             {
                                                 href: app.route.user(user),
                                                 title: app.translator.trans('flarum-ext-welcomebox.forum.tooltipProfile'),
                                             },
                                             m('i', { className: 'menuicon far fa-user' })
                                         ),
-                                        m('a',
+                                        m(
+                                            'a',
                                             {
                                                 href: app.route.user(user) + '/mentions',
                                                 title: app.translator.trans('flarum-ext-welcomebox.forum.tooltipMentions'),
                                             },
                                             m('i', { className: 'menuicon fas fa-at' })
                                         ),
-                                        m('a',
+                                        m(
+                                            'a',
                                             {
                                                 href: app.route.user(user) + '/discussions',
                                                 title: app.translator.trans('flarum-ext-welcomebox.forum.tooltipDisclist'),
@@ -109,7 +117,8 @@ export default class WelcomeBoxWidget extends Widget {
                         m('img', { className: 'guestavatarimg', src: ImgAvatar }),
                         m('div', { className: 'guesttext' }, app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')),
                         m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
-                        m('button',
+                        m(
+                            'button',
                             {
                                 className: '.SplitDropdown-button Button Button--primary hasIcon',
                                 type: 'button',
