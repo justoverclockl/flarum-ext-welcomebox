@@ -15,102 +15,80 @@ app.initializers.add('justoverclock/flarum-ext-welcomebox', () => {
     extend(IndexPage.prototype, 'sidebarItems', (items) => {
         const user = app.session.user;
         const lastSeenAt = user?.lastSeenAt() !== null ? user?.lastSeenAt() : false;
-        const userLang = navigator.language?.slice(0, 2);
+        const userLang = app.translator.getLocale();
         const SettingsLink = app.route('settings');
         const useWidget = app.forum.attribute('justoverclock-welcomebox.UseWidget');
 
         if (!useWidget && user) {
             items.add(
                 'welcomeBox',
-                m(
-                    'div',
-                    { className: 'containerwb' },
-                    m(
-                        'div',
-                        { className: 'backgrwb' },
-                        Button.component({
+                <div className="containerwb">
+                    <div className="backgrwb">
+                        {Button.component({
                             icon: 'fas fa-sign-out-alt logoutt',
                             title: app.translator.trans('core.forum.header.log_out_button'),
                             className: 'Dropdown-toggle Button logwbox',
                             onclick: app.session.logout.bind(app.session),
-                        }),
-                        [
-                            m('div', m('a', { href: app.route.user(user) }, m('div', { className: 'avatarwb' }, AvatarEditor.component({ user })))),
-                            m(
-                                'div',
-                                { className: 'contentwb' },
-                                m(
-                                    'div',
-                                    { className: 'textinfo' },
-                                    app.translator.trans('flarum-ext-welcomebox.forum.wback'),
-                                    m('br'),
-                                    m('strong', username(user))
-                                ),
-                                m(
-                                    'div',
-                                    { className: 'cont' },
-                                    m('div', { className: 'circletop' }, [
-                                        m(
-                                            'a',
-                                            { href: SettingsLink, title: app.translator.trans('core.forum.settings.title') },
-                                            m('i', { className: 'menuicon fas fa-tasks' })
-                                        ),
-                                        m(
-                                            'a',
-                                            {
-                                                href: app.route.user(user),
-                                                title: app.translator.trans('flarum-ext-welcomebox.forum.tooltipProfile'),
-                                            },
-                                            m('i', { className: 'menuicon far fa-user' })
-                                        ),
-                                        m(
-                                            'a',
-                                            {
-                                                href: app.route.user(user) + '/mentions',
-                                                title: app.translator.trans('flarum-ext-welcomebox.forum.tooltipMentions'),
-                                            },
-                                            m('i', { className: 'menuicon fas fa-at' })
-                                        ),
-                                        m(
-                                            'a',
-                                            {
-                                                href: app.route.user(user) + '/discussions',
-                                                title: app.translator.trans('flarum-ext-welcomebox.forum.tooltipDisclist'),
-                                            },
-                                            m('i', { className: 'menuicon far fa-list-alt' })
-                                        ),
-                                    ])
-                                )
-                            ),
-                            m('div', { className: 'iconbadge' }, listItems(user.badges().toArray())),
-                            m('.ulwb', { className: 'contentwb' }, [
-                                m('li', [
-                                    m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.npost')),
-                                    ': ',
-                                    m('strong', { className: 'textinfo' }, formatNumber(user.commentCount())),
-                                ]),
-                                m('li', [
-                                    m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.discussion')),
-                                    ': ',
-                                    m('strong', { className: 'textinfo' }, formatNumber(user.discussionCount())),
-                                ]),
-                                lastSeenAt !== null
-                                    ? m('li', [
-                                          m('label', { className: 'textinfo' }, app.translator.trans('flarum-ext-welcomebox.forum.lastSeen')),
-                                          ': ',
-                                          m(
-                                              'strong',
-                                              { className: 'textinfo' },
-                                              `${moment(lastSeenAt)
-                                                  .locale(userLang || 'en')
-                                                  .fromNow()}`
-                                          ),
-                                      ])
-                                    : false,
-                            ]),
-                        ]
-                    )
-                ),
+                        })}
+                        {[
+                            <div>
+                                <a href={app.route.user(user)}>
+                                    <div className="avatarwb">{AvatarEditor.component({ user })}</div>
+                                </a>
+                            </div>,
+                            <div className="contentwb">
+                                <div className="textinfo">
+                                    {app.translator.trans('flarum-ext-welcomebox.forum.wback')}
+                                    <br />
+                                    <strong>{username(user)}</strong>
+                                </div>
+                                <div className="cont">
+                                    <div className="circletop">
+                                        <a href={SettingsLink} title={app.translator.trans('core.forum.settings.title')}>
+                                            <i className="menuicon fas fa-tasks"></i>
+                                        </a>
+                                        <a href={app.route.user(user)} title={app.translator.trans('flarum-ext-welcomebox.forum.tooltipProfile')}>
+                                            <i className="menuicon far fa-user"></i>
+                                        </a>
+                                        <a
+                                            href={app.route.user(user) + '/mentions'}
+                                            title={app.translator.trans('flarum-ext-welcomebox.forum.tooltipMentions')}
+                                        >
+                                            <i className="menuicon fas fa-at"></i>
+                                        </a>
+                                        <a
+                                            href={app.route.user(user) + '/discussions'}
+                                            title={app.translator.trans('flarum-ext-welcomebox.forum.tooltipDisclist')}
+                                        >
+                                            <i className="menuicon far fa-list-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>,
+                            <div className="iconbadge">{listItems(user.badges().toArray())}</div>,
+                            <div className="ulwb contentwb">
+                                <li>
+                                    <label className="textinfo">{app.translator.trans('flarum-ext-welcomebox.forum.npost')}</label>:{' '}
+                                    <strong className="textinfo">{formatNumber(user.commentCount())}</strong>
+                                </li>
+                                <li>
+                                    <label className="textinfo">{app.translator.trans('flarum-ext-welcomebox.forum.discussion')}</label>:{' '}
+                                    <strong className="textinfo">{formatNumber(user.discussionCount())}</strong>
+                                </li>
+                                {lastSeenAt !== null && (
+                                    <li>
+                                        <label className="textinfo">{app.translator.trans('flarum-ext-welcomebox.forum.lastSeen')}</label>:{' '}
+                                        <strong className="textinfo">
+                                            {moment(lastSeenAt)
+                                                .locale(userLang || 'en')
+                                                .fromNow()}
+                                        </strong>
+                                    </li>
+                                )}
+                            </div>,
+                        ]}
+                    </div>
+                </div>,
                 20
             );
         }
@@ -121,38 +99,40 @@ extend(IndexPage.prototype, 'sidebarItems', (items) => {
     const useWidget = app.forum.attribute('justoverclock-welcomebox.UseWidget');
     const ImgAvatar = app.forum.attribute('imgUrl') || app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-welcomebox/no-avatar.png';
 
-    const signupComponent = {
-        view: function (vnode) {
+    const SignupComponent = {
+        view: function () {
             if (isLoginAvailable) {
-                return m(
-                    'button',
-                    {
-                        className: '.SplitDropdown-button Button Button--primary hasIcon',
-                        type: 'button',
-                        onclick: (componentClass, attrs) => app.modal.show(SignUpModal, attrs),
-                    },
-                    app.translator.trans('core.forum.header.sign_up_link')
+                return (
+                    <button
+                        className=".SplitDropdown-button Button Button--primary hasIcon"
+                        type="button"
+                        onclick={(componentClass, attrs) => app.modal.show(SignUpModal, attrs)}
+                    >
+                        {app.translator.trans('core.forum.header.sign_up_link')}
+                    </button>
                 );
             }
+            return null;
         },
     };
+
     if (!useWidget) {
-        if (!app.session.user)
-            if (app.forum.attribute('HideGuestBox') === true)
+        if (!app.session.user) {
+            if (app.forum.attribute('HideGuestBox') === true) {
                 items.add(
                     'welcomeBoxGuest',
-                    m(
-                        'div',
-                        { className: 'containerwb' },
-                        m('div', { className: 'backgrwbguest' }, [
-                            m('img', { className: 'guestavatarimg', src: ImgAvatar }),
-                            m('div', { className: 'guesttext' }, app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')),
-                            m('p', { className: 'guestdesc' }, app.translator.trans('flarum-ext-welcomebox.forum.notregistered')),
-                            m(signupComponent),
-                            m('div', { className: 'contentwb' }),
-                        ])
-                    ),
+                    <div className="containerwb">
+                        <div className="backgrwbguest">
+                            <img className="guestavatarimg" src={ImgAvatar} />
+                            <div className="guesttext">{app.translator.trans('flarum-ext-welcomebox.forum.welcomeguest')}</div>
+                            <p className="guestdesc">{app.translator.trans('flarum-ext-welcomebox.forum.notregistered')}</p>
+                            {m(SignupComponent)}
+                            <div className="contentwb"></div>
+                        </div>
+                    </div>,
                     20
                 );
+            }
+        }
     }
 });
