@@ -12,8 +12,7 @@
         "forum": "https://discuss.flarum.org/d/27023"
     },
     "require": {
-        "flarum/core": "^2.0.0-beta",
-        "afrux/forum-widgets-core": "^0.1.0"
+        "flarum/core": ">= v2.0.0-beta.1 < 2.0"
     },
     "authors": [
         {
