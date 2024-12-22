@@ -17,7 +17,6 @@ export default class UserWelcomeBox extends Component<UserWelcomeBoxAttrs> {
   view(vnode: Mithril.Vnode<ComponentAttrs, this>): Mithril.Children {
     const user = app.session.user
     const userLang: string = app.translator.getLocale();
-    console.log(userLang)
     const SettingsLink: string = app.route('settings');
     const lastSeenAt = user?.lastSeenAt();
 
@@ -40,7 +39,7 @@ export default class UserWelcomeBox extends Component<UserWelcomeBoxAttrs> {
 
     const lastSeenRelative = lastSeenAt
       ? formatDistanceToNow(new Date(lastSeenAt), { addSuffix: true, locale })
-      : 'Never seen';
+      : app.translator.trans('flarum-ext-welcomebox.forum.neverSeen');
 
     return (
       <div className="containerwb">

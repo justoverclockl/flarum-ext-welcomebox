@@ -3,6 +3,7 @@ import IndexSidebar from 'flarum/forum/components/IndexSidebar';
 import app from 'flarum/forum/app';
 import User from "flarum/common/models/User";
 import UserWelcomeBox from "./components/UserWelcomeBox";
+import GuestWelcomeBox from "./components/GuestWelcomeBox";
 
 export default function addWelcomeBox() {
   extend(IndexSidebar.prototype, 'items', function (items) {
@@ -17,8 +18,8 @@ export default function addWelcomeBox() {
       )
     } else {
       items.add(
-        'welcomeBox',
-        <div>guestone</div>, 20
+        'welcomeBoxGuest',
+        <GuestWelcomeBox />, 20
       )
     }
   })
