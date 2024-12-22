@@ -1,42 +1,29 @@
 {
     "name": "justoverclock/flarum-ext-welcomebox",
-    "description": "Add Welcome Box in sidenav with user avatar",
+    "description": "Add a Welcome Box for flarum, different for guest and registered users.",
     "keywords": [
         "flarum"
     ],
     "type": "flarum-extension",
     "license": "MIT",
-    "support": {
-        "issues": "https://github.com/justoverclockl/flarum-ext-welcomebox/issues",
-        "source": "https://github.com/justoverclockl/flarum-ext-welcomebox",
-        "forum": "https://discuss.flarum.org/d/27023"
-    },
     "require": {
-        "flarum/core": "^1.3.0",
-        "afrux/forum-widgets-core": "^0.1.0"
+        "flarum/core": "^v2.0.0-beta.1"
     },
     "authors": [
         {
             "name": "Marco Colia",
-            "email": "info@flarum.it",
-            "role": "Developer",
-            "homepage": "https://flarum.it"
-        }
-    ],
-    "funding": [
-        {
-            "type": "website",
-            "url": "https://www.paypal.com/donate?hosted_button_id=25WSH565TJCLE"
+            "email": "info@justoverclock.it",
+            "role": "Developer"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Justoverclock\\Welcomebox\\": "src/"
+            "Justoverclock\\WelcomeBox\\": "src/"
         }
     },
     "extra": {
         "flarum-extension": {
-            "title": "Welcomebox",
+            "title": "WelcomeBox",
             "category": "feature",
             "icon": {
                 "name": "fas fa-user-tie",
@@ -44,8 +31,27 @@
                 "color": "white"
             }
         },
-        "flagrow": {
-            "discuss": "https://discuss.flarum.org/d/27023"
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": false,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "frontendTesting": false,
+                "backendTesting": false,
+                "phpstan": false,
+                "editorConfig": true,
+                "styleci": true
+            }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

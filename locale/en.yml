@@ -11,6 +11,7 @@ flarum-ext-welcomebox:
     tooltipMentions: Mentions
     tooltipDisclist: My Discussion List
     lastSeen: Last Visit
+    neverSeen: Never seen
   admin:
     enablepostbox: Enable Welcome Box for guest
     img: Image url (Guest Box)
